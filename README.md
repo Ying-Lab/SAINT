@@ -1,8 +1,10 @@
 # SAINT
+
 **SAINTis a weakly-supervised learning method where the embedding function is learned automatically from the easily-acquired data.Compared to existing deep learning-based alignment-free method, SAINT doesn’t require tedious labors to collect accurate alignment distances to train.SAINT is more computationally fast and memory efficient because
 sequence data are operated in a compressed embedding space which is much faster to retrieval and succinct to store.**
 
 ## Version Release Notes
+
 - Version 1.0
 
 1. This is the first version of SAINT pipeline. 
@@ -10,6 +12,7 @@ sequence data are operated in a compressed embedding space which is much faster 
 2. This An demo of SAINT running is given here. 
 
 ## Package installation and configuration
+
 - Pre-install running environment
 
 1.Unix or Linux operating system.
@@ -29,20 +32,30 @@ sequence data are operated in a compressed embedding space which is much faster 
 5.If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
 
 ## The demo of SAINT
+
 The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
 
 **Run SAINT**
 
 1.Run SAINT to get model.
+
 Create a new folder to put output file
+
 $ mkdir ./model
+
 Run triplet_model.py
+
 $ python ./code/triplet_model.py
 
 2.Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
+
 Create a new folder to put output files.
+
 $ mkdir ./output
+
 Run position.py
+
 $ python ./code/position.py
+
 The output are ./output/taxonomy.txt and ./output/Accuracy.txt.
 
