@@ -45,7 +45,7 @@ sequence data are operated in a compressed embedding space which is much faster 
 
 ## The demo of SAINT
 
-The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
+The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
 
 **Run SAINT**
 
@@ -63,7 +63,7 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
     >```  
  
 
-2. Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
+2. Predict taxonomy of unknown species and Calculate the performance of SAINT results.
 
     Create a new folder to put output files.
     
@@ -77,5 +77,5 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
     >   $ python ./code/position.py
     >``` 
 
-    The output are ./output/taxonomy.txt and ./output/Accuracy.txt.
+    The output are ./output/predict_taxonomy.txt and ./output/Accuracy.txt.
 
