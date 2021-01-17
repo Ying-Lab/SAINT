@@ -60,33 +60,27 @@ if __name__ == "__main__":
     for test_iterm in test_name:
         test_category[test_iterm] = genus_[all_name_.index(test_iterm)]
 
-    order = []
-    family = []
     genus = []
     all_name = []
-    cc = list(zip(order_,family_,genus_,all_name_))
+    cc = list(zip(genus_,all_name_))
     mid = []
     for test_iterm in train_name:
         mid.append(cc[all_name_.index(test_iterm)])
-    order[:],family[:],genus[:],all_name[:]= zip(*mid)
-    
-
+    genus[:],all_name[:]= zip(*mid)   
     non_unique_train = []
     for dup in sorted(list_duplicates(genus)):
         non_unique_train.append(dup)
-
-
-
-    model1 = load_model('good_model/29.h5',custom_objects={'identity_loss':identity_loss,'eulidean_distance':eulidean_distance})
+    
+    model1 = load_model('model/best_model.h5',custom_objects={'identity_loss':identity_loss,'eulidean_distance':eulidean_distance})
     model = Model(inputs=model1.input[0],outputs=model1.get_layer('Dense_9').get_output_at(0))
-
-
     g = 0
     f = 0
     o = 0
     c =0
     p = 0
     n = 0
+    file = open('output/predict_taxonomy.txt','w')
+    file.write('predict_phylum'+'\t'+'predict_class'+'\t'+'predict_order'+'\t'+'predict_family'+'\t'+'predict_genus'+'\t'+'species'+'\n')
     for anchor_spiece in test_name:
         all_ = {}
         for positive_iterm in non_unique_train: 
@@ -114,10 +108,15 @@ if __name__ == "__main__":
             c = c+1
         if phylum_[genus_.index(all_[0][0])] == phylum_[all_name_.index(anchor_spiece)]:
             p = p+1
-    n = len(test_name)        
-    print(g,f,o,c,p)
-    print(n)
-    print(g/n,f/n,o/n,c/n,p/n)
+        file.write(phylum_[genus_.index(all_[0][0])]+'\t'+class_[genus_.index(all_[0][0])]+'\t'+order_[genus_.index(all_[0][0])]+'\t'+family_[genus_.index(all_[0][0])]+'\t'+all_[0][0]+'\t'+anchor_spiece+'\n')
+    file.close()
+    file2 = open('output/Accuracy.txt','w')
+    n = len(test_name)    
+    file2.write('SAINT position result:'+'\n')  
+    file2.write('Layer'+'\t'+'phylum'+'\t'+'class'+'\t'+'order'+'\t'+'family'+'\t'+'genus'+'\n')
+    file2.write('True_Number/all_number'+'\t'+str(o)+'/'+str(n)+'\t'+str(f)+'/'+str(n)+'\t'+str(g)+'/'+str(n)+'\t' +str(c)+'/'+str(n)+'\t'+str(p)+'/'+str(n)+'\n')
+    file2.write('Accuracy'+'\t'+str(g/n)+'\t'+str(f/n)+'\t'+str(o/n)+'\t'+str(c/n)+'\t'+str(p/n))
+    file2.close()
 
 
               
