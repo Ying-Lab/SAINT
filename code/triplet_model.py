@@ -341,7 +341,7 @@ def train(kingdom,phylum,class_,order,family,genus,file_name,l,k):
     print('--------On_train_begin-----------')
     
     
-    vali_name =  list(pd.read_table('vali_name.txt', header=None, index_col=0).T)
+    vali_name =  list(pd.read_table('test.txt', header=None, index_col=0).T)
    
     train_name = list(set(file_name).difference(set(vali_name)))
     vali_index = []
@@ -394,7 +394,7 @@ def train(kingdom,phylum,class_,order,family,genus,file_name,l,k):
 
     
 if __name__ == "__main__":
-    train_data = pd.read_csv('new_data_filter.csv')
+    train_data = pd.read_csv('data.csv')
   
     
     k = 6
