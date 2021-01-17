@@ -14,7 +14,6 @@ from sklearn.utils.class_weight import compute_class_weight
 os.environ['KERAS_BACKEND']='tensorflow'
 np.random.seed(123) 
 
-
 def list_duplicates(seq,index):    
     tally = defaultdict(list) 
     for i,item in enumerate(seq): 
@@ -45,6 +44,7 @@ def triplet(level,all_level,file_name,index):
             for positive_iterm in positive_index:
                 negative_index =   list( (set(new_index) | set(iterm[1])) - (set(new_index) & set(iterm[1])))                
                 for negative_iterm in negative_index:
+                    #Triplet sampling is used in the class layer. If you have too many samples, you can also use this method in the genes, family and order layers.
                     if level == all_level[3]:
                         if all_level[2][anchor_iterm] != all_level[2][positive_iterm] and all_level[4][positive_iterm] == all_level[4][negative_iterm] != '':
                             anchor.append(file_name[anchor_iterm])
@@ -89,7 +89,6 @@ def list2data(list_file, kmer_data, k):
 #随机打乱顺序
 def shuffle(a,b,c,d): 
      multi_list = list(zip(a, b, c,d))
-
      random.shuffle(multi_list)     
      a[:], b[:],c[:] ,d[:]=  zip(*multi_list) 
      return a,b,c,d
@@ -168,12 +167,10 @@ def triplet_model(k):
 
 def train_test_triplet(kingdom,phylum,class_,order,family,genus,file_name,index,is_):
     anchor_list_class,positive_list_class,negative_list_class,label_class = triplet(class_,[genus,family,order,class_,phylum,kingdom],file_name,index)
-  
     anchor_list_order,positive_list_order,negative_list_order,label_order = triplet(order,[genus,family,order,class_,phylum,kingdom],file_name,index)
     anchor_list_family,positive_list_family,negative_list_family,label_family = triplet(family,[genus,family,order,class_,phylum,kingdom],file_name,index)
     anchor_list_genus,positive_list_genus,negative_list_genus,label_genus = triplet(genus,[genus,family,order,class_,phylum,kingdom],file_name,index)
    
-
     anchor_list = anchor_list_class + anchor_list_order + anchor_list_family + anchor_list_genus
     positive_list = positive_list_class + positive_list_order + positive_list_family + positive_list_genus
     negative_list = negative_list_class + negative_list_order + negative_list_family + negative_list_genus
@@ -184,7 +181,8 @@ def train_test_triplet(kingdom,phylum,class_,order,family,genus,file_name,index,
 def get_data(file_name):
     data = {}
     for i in range(len(file_name)):
-        m =pd.read_csv('kmer/'+file_name[i]+'_k6.txt', header=None,sep='\t',index_col=[0]).T       
+        m =pd.read_csv('.resource/kmer/'+file_name[i]+'_k6.txt', header=None,sep='\t',index_col=[0]).T  
+        #The missing kmer is supplemented with 0 
         new_data = (m.reindex(columns=AT, fill_value=0)).iloc[0]
         data[file_name[i]] =np.around((new_data/new_data.sum())*10000,4)     
     return data
@@ -209,19 +207,19 @@ def weight_distance(weight,distance_label):
              new_label.append(weight[i-1]*1)
      return new_label
 
-
+'''
 class callbackmodel(Callback):
     def __init__(self, model):
         self.model = model
     def on_epoch_end(self,epoch,logs=None):
         self.model.save('model/'+str(epoch)+'.h5')
-
+'''
 
 #训练模型
 def train(kingdom,phylum,class_,order,family,genus,file_name,l,k):
     print('--------On_train_begin-----------')
         
-    test_name =  list(pd.read_table('test_name.txt', header=None, index_col=0).T) 
+    test_name =  list(pd.read_table('./code/test_name.txt', header=None, index_col=0).T) 
     train_name = list(set(file_name).difference(set(test_name)))
     test_index = []
     train_index = []
@@ -256,16 +254,14 @@ def train(kingdom,phylum,class_,order,family,genus,file_name,l,k):
     model.fit([anchor_data_train,positive_data_train,negative_data_train],  np.zeros(len(anchor_data_train)), shuffle = False,
       epochs=30 ,batch_size=5000,verbose =1,
       validation_data =([anchor_data_test,positive_data_test,negative_data_test],np.zeros(len(anchor_data_test))),
-      callbacks=[callbackmodel(model)],
+     # callbacks=[callbackmodel(model)],
       sample_weight = np.array(last_weight)
             )
-
+    model.save('model/best_model.h5')
 
     
 if __name__ == "__main__":
     train_data = pd.read_csv('data.csv')
-  
-    
     k = 6
     kingdom = list(train_data['kingdom'])
     phylum = list(train_data['phylum'])
@@ -276,6 +272,5 @@ if __name__ == "__main__":
     file_name = list(train_data.iloc[:, -1])    
  
     l = list(range(len(file_name)))
-    AT = list(pd.read_table('k'+str(k)+'.txt', header=None, index_col=0).T)
-     
+    AT = list(pd.read_table('code/k'+str(k)+'.txt', header=None, index_col=0).T) 
     train(kingdom,phylum,class_,order,family,genus,file_name,l,k)
