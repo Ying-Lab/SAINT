@@ -35,13 +35,7 @@ sequence data are operated in a compressed embedding space which is much faster 
     >   $ ungiz ./resource/kmer.zip
     >```  
 
- 4. Enter the directory: 
-
-    >```   
-    >   $ cd /home/user/SAINT/
-    >```
-
- 5. If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
+ 4. If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
 
 ## The demo of SAINT
 
