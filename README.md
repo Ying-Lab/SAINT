@@ -29,7 +29,7 @@ sequence data are operated in a compressed embedding space which is much faster 
     >   $ cd /home/user/SAINT 
     >```  
 
- 3. Extract the tar file: 
+ 3. Extract the zip file: 
 
     >```   
     >   $ ungiz ./resource/kmer.zip
