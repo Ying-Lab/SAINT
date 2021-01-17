@@ -15,21 +15,21 @@ sequence data are operated in a compressed embedding space which is much faster 
 
 - Pre-install running environment
 
-1.Unix or Linux operating system.
+1. Unix or Linux operating system.
 
-2.Python 2.7 or above.
+2. Python 2.7 or above.
 
 - Detailed steps
 
-1.Download the source code to your directory, e.g: ’/home/user/SAINT’.
+1. Download the source code to your directory, e.g: ’/home/user/SAINT’.
 
-2.Enter your specified directory: $ cd /home/user/SAINT.
+2. Enter your specified directory: $ cd /home/user/SAINT.
 
-3.Extract the tar file: $ ungiz resource/kmer.zip.
+3. Extract the tar file: $ ungiz resource/kmer.zip.
 
-4.Enter the directory: $ cd /home/user/SAINT/code.
+4. Enter the directory: $ cd /home/user/SAINT/code.
 
-5.If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
+5. If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
 
 ## The demo of SAINT
 
@@ -37,7 +37,7 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
 
 **Run SAINT**
 
-1.Run SAINT to get model.
+1. Run SAINT to get model.
 
 Create a new folder to put output file
 
@@ -47,7 +47,7 @@ Run triplet_model.py
 
 $ python ./code/triplet_model.py
 
-2.Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
+2. Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
 
 Create a new folder to put output files.
 
