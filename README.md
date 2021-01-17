@@ -9,7 +9,7 @@ sequence data are operated in a compressed embedding space which is much faster 
 
  1. This is the first version of SAINT pipeline. 
 
- 2. This An demo of SAINT running is given here. 
+ 2. An demo of SAINT running is given here. 
 
 ## Package installation and configuration
 
@@ -51,7 +51,7 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
 
 1. Run SAINT to get model.
 
-    Create a new folder to put output file
+    Create a new folder to put model file
 
     >```   
     >   $ mkdir ./model   
@@ -66,12 +66,16 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
 2. Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
 
     Create a new folder to put output files.
-
-    $ mkdir ./output
+    
+    >```   
+    >   $ mkdir ./output  
+    >```  
 
     Run position.py
-
-    $ python ./code/position.py
+    
+    >```   
+    >   $ python ./code/position.py
+    >``` 
 
     The output are ./output/taxonomy.txt and ./output/Accuracy.txt.
 
