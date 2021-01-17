@@ -16,7 +16,8 @@ sequence data are operated in a compressed embedding space which is much faster 
 4.Enter the directory: $ cd /home/user/SAINT/code
 5.If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
 ## The demo of SAINT
-# The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
+The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
+
 **Run SAINT**
 1.Run SAINT to get model.
 Create a new folder to put output file
