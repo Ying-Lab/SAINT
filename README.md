@@ -3,6 +3,12 @@
 **SAINT is a weakly-supervised learning method where the embedding function is learned automatically from the easily-acquired data.Compared to existing deep learning-based alignment-free method, SAINT doesn’t require tedious labors to collect accurate alignment distances to train.SAINT is more computationally fast and memory efficient because
 sequence data are operated in a compressed embedding space which is much faster to retrieval and succinct to store.**
 
+**Compared to existing alignment-free sequence comparison methods,SAINT offers following advantages:**
+
+ 1. SAINTis more computationally fast and memory efficient because sequence data are operated in a compressed embedding space which is much faster to retrieval and succinct to store. 
+
+ 2. SAINTis a weakly-supervised learning method where the embedding function is learned automatically from the easily-acquired data. Compared to existing deep learning-based alignment-free method, SAINT doesn’t require tedious labors to collect accurate alignment distances to train. 
+
 ## Version Release Notes
 
 - Version 1.0
