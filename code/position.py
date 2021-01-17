@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 10 14:51:50 2019
-
-@author: yingwang
-"""
 
 import numpy as np
 import pandas as pd
@@ -39,7 +33,7 @@ def list_duplicates(seq):
 def get_data(file_name):
     data = {}
     for i in range(len(file_name)):
-         m =pd.read_csv('kmc6_466_307/'+file_name[i]+'_k6.txt', header=None,sep='\t',index_col=[0]).T
+         m =pd.read_csv('kmer/'+file_name[i]+'_k6.txt', header=None,sep='\t',index_col=[0]).T
          new_data = (m.reindex(columns=AT, fill_value=0)).iloc[0]
      #   data[file_name[i]] =np.around((new_data)*10000,6)
          data[file_name[i]] =np.around((new_data/new_data.sum())*10000,6)
@@ -48,12 +42,12 @@ def get_data(file_name):
 
 if __name__ == "__main__":
 
-    train_data = pd.read_csv('new_data_filter.csv')
+    train_data = pd.read_csv('data.csv')
     all_species = list(train_data.iloc[:, -1])
     all_name_ = ['_'.join(['_'.join(_.split())]) for _ in all_species]
 
-    vali_name = list(pd.read_table('vali_name_1.txt',header = None,index_col=0).T)
-    train_name = list(set(all_name_).difference(set(vali_name)))
+    test_name = list(pd.read_table('test_name.txt',header = None,index_col=0).T)
+    train_name = list(set(all_name_).difference(set(test_name)))
     phylum_ = list(train_data['phylum'])
     class_ = list(train_data['class'])
     order_ = list(train_data['order'])
@@ -63,7 +57,7 @@ if __name__ == "__main__":
     data = get_data(all_name_)
 
     test_category = {}
-    for test_iterm in vali_name:
+    for test_iterm in test_name:
         test_category[test_iterm] = genus_[all_name_.index(test_iterm)]
 
     order = []
@@ -84,7 +78,7 @@ if __name__ == "__main__":
 
 
     model1 = load_model('good_model/29.h5',custom_objects={'identity_loss':identity_loss,'eulidean_distance':eulidean_distance})
-    model = Model(inputs=model1.input[0],outputs=model1.get_layer('Dense_20').get_output_at(0))
+    model = Model(inputs=model1.input[0],outputs=model1.get_layer('Dense_9').get_output_at(0))
 
 
     g = 0
@@ -93,8 +87,7 @@ if __name__ == "__main__":
     c =0
     p = 0
     n = 0
-    for anchor_spiece in vali_name:
-
+    for anchor_spiece in test_name:
         all_ = {}
         for positive_iterm in non_unique_train: 
        
@@ -106,15 +99,11 @@ if __name__ == "__main__":
             output_data = model.predict(input_data)
             oushi = []
             for j in output_data[1:]:
-                oushi.append(np.sqrt(sum(np.power((output_data[0] - j), 2))))
-            
+                oushi.append(np.sqrt(sum(np.power((output_data[0] - j), 2))))           
             all_[name] = np.mean(oushi)
-        
-            
+                   
         all_ = sorted(all_.items(), key=lambda x: x[1])
-
-            
-    
+   
         if all_[0][0] == test_category[anchor_spiece]:
             g = g +1
         if family_[genus_.index(all_[0][0])] == family_[all_name_.index(anchor_spiece)]:
@@ -125,10 +114,11 @@ if __name__ == "__main__":
             c = c+1
         if phylum_[genus_.index(all_[0][0])] == phylum_[all_name_.index(anchor_spiece)]:
             p = p+1
-    n = len(vali_name)        
+    n = len(test_name)        
     print(g,f,o,c,p)
     print(n)
     print(g/n,f/n,o/n,c/n,p/n)
+
 
               
                     
