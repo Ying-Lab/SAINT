@@ -5,3 +5,16 @@ sequence data are operated in a compressed embedding space which is much faster 
 - Version 1.0
 1. This is the first version of SAINT pipeline. 
 2. This An demo of SAINT running is given here. 
+## Package installation and configuration
+- Pre-install running environment
+1.Unix or Linux operating system.
+2.Python 2.7 or above.
+- Detailed steps
+1.Download the source code to your directory, e.g: ’/home/user/SAINT’.
+2.Enter your specified directory: $ cd /home/user/SAINT
+3.Extract the tar file: $ ungiz resource/kmer.zip
+4.Enter the directory: $ cd /home/user/SAINT/code
+5.If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
+## The demo of SAINT. 
+The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC tool to convert FASTA file into kmer frequency file.
+**Run SAINT**
