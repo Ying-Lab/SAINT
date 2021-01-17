@@ -41,11 +41,15 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
 
     Create a new folder to put output file
 
-    $ mkdir ./model
+    >```   
+    >   $ mkdir ./model   
+    >```  
 
     Run triplet_model.py
-
-    $ python ./code/triplet_model.py
+    >```  
+    >    $ python ./code/triplet_model.py 
+    >```  
+ 
 
 2. Evaluate taxonomy of unknown species and Calculate the performance of SAINT results.
 
