@@ -214,7 +214,7 @@ class callbackmodel(Callback):
     def __init__(self, model):
         self.model = model
     def on_epoch_end(self,epoch,logs=None):
-        self.model.save('good_model/'+str(epoch)+'.h5')
+        self.model.save('model/'+str(epoch)+'.h5')
 
 
 #训练模型
