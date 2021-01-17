@@ -23,11 +23,23 @@ sequence data are operated in a compressed embedding space which is much faster 
 
 1. Download the source code to your directory, e.g: ’/home/user/SAINT’.
 
-2. Enter your specified directory: $ cd /home/user/SAINT.
+2. Enter your specified directory: 
 
-3. Extract the tar file: $ ungiz resource/kmer.zip.
+    >```   
+    >   $ cd /home/user/SAINT 
+    >```  
 
-4. Enter the directory: $ cd /home/user/SAINT/code.
+3. Extract the tar file: .
+
+    >```   
+    >   $ ungiz resource/kmer.zip
+    >```  
+
+4. Enter the directory: $ cd /home/user/SAINT/.
+
+    >```   
+    >   $ cd /home/user/SAINT/
+    >```
 
 5. If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
 
@@ -47,7 +59,7 @@ The dataset was download from NCBI. For the 200 bacteria genomes, Saint uses KMC
 
     Run triplet_model.py
     >```  
-    >    $ python ./code/triplet_model.py 
+    >   $ python ./code/triplet_model.py 
     >```  
  
 
