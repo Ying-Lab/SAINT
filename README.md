@@ -71,10 +71,10 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
     >   $ mkdir ./output  
     >```  
 
-    Run position.py
+    Run taxonomy_localization.py
     
     >```   
-    >   $ python ./code/position.py
+    >   $ python ./code/taxonomy_localization.py
     >``` 
 
     The output are ./output/predict_taxonomy.txt and ./output/Accuracy.txt.
