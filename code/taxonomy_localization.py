@@ -112,7 +112,7 @@ if __name__ == "__main__":
     file.close()
     file2 = open('output/Accuracy.txt','w')
     n = len(test_name)    
-    file2.write('SAINT position result:'+'\n')  
+    file2.write('SAINT taxonomy localization result:'+'\n')  
     file2.write('Layer'+'\t'+'phylum'+'\t'+'class'+'\t'+'order'+'\t'+'family'+'\t'+'genus'+'\n')
     file2.write('True_Number/all_number'+'\t'+str(o)+'/'+str(n)+'\t'+str(f)+'/'+str(n)+'\t'+str(g)+'/'+str(n)+'\t' +str(c)+'/'+str(n)+'\t'+str(p)+'/'+str(n)+'\n')
     file2.write('Accuracy'+'\t'+str(g/n)+'\t'+str(f/n)+'\t'+str(o/n)+'\t'+str(c/n)+'\t'+str(p/n))
