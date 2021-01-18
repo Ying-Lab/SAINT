@@ -45,7 +45,7 @@ sequence data are operated in a compressed embedding space which is much faster 
 
 ## The demo of SAINT
 
-The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file[here](https://github.com/Ying-Lab/SAINT/tree/main/resource/kmer.zip).
+The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file [here](https://github.com/Ying-Lab/SAINT/tree/main/resource/kmer.zip).
 
 **Run SAINT**
 
