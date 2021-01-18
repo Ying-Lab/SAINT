@@ -23,7 +23,7 @@ sequence data are operated in a compressed embedding space which is much faster 
 
  1. Unix or Linux operating system.
 
- 2. Python 2.7 or above.
+ 2. Python 3 or above.
 
 - Detailed steps
 
@@ -41,11 +41,11 @@ sequence data are operated in a compressed embedding space which is much faster 
     >   $ ungiz ./resource/kmer.zip
     >```  
 
- 4. If your operating system has multiple Python version, please be sure your Python version at least 2.7 or above.
+ 4. If your operating system has multiple Python version, please be sure your Python version at least 3 or above.
 
 ## The demo of SAINT
 
-The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file.
+The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC tool to convert fasta file into kmer frequency file[here](https://github.com/Ying-Lab/SAINT/tree/main/resource/kmer.zip).
 
 **Run SAINT**
 
