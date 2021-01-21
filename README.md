@@ -54,27 +54,23 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
     Create a new folder to put model file
 
     >```   
-    >   $ mkdir ./model   
+    >   $ mkdir output
     >```  
 
     Run triplet_model.py
     >```  
-    >   $ python ./code/triplet_model.py 
+    >   $ python code/triplet_model.py -i resource/data.csv -d resource/kmer/ -t resource/test_name.txt -k 6 -e 30 -o output/
+
     >```  
  
 
-2. Predict taxonomy of unknown species and Calculate the performance of SAINT results.
-
-    Create a new folder to put output files.
-    
-    >```   
-    >   $ mkdir ./output  
-    >```  
+2. Predict taxonomy of unknown species and Calculate the performance of SAINT results.`  
 
     Run taxonomy_localization.py
     
     >```   
-    >   $ python ./code/taxonomy_localization.py
+    >   $ python code/taxonomy_localization.py -i resource/data.csv -d resource/kmer/ -t resource/test_name.txt  -o output/
+
     >``` 
 
     The output are ./output/predict_taxonomy.txt and ./output/Accuracy.txt.
