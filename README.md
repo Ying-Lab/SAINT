@@ -22,8 +22,12 @@ sequence data are operated in a compressed embedding space which is much faster 
 - Pre-install running environment
 
  1. Unix or Linux operating system.
+ 
+ 2. CPU is enough for calculation.
 
- 2. Python 3 or above.
+ 3. Python 3 or above.
+ 
+ 4. Packages like sys, optparse, os, random, numpy, pandas, collections, keras and sklearn need to be prepared.
 
 - Detailed steps
 
@@ -38,7 +42,7 @@ sequence data are operated in a compressed embedding space which is much faster 
  3. Extract the zip file: 
 
     >```   
-    >   $ ungiz ./resource/kmer.zip
+    >   $ unzip ./resource/kmer.zip
     >```  
 
  4. If your operating system has multiple Python version, please be sure your Python version at least 3 or above.
@@ -49,7 +53,19 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
 
 **Run SAINT**
 
-1. Run SAINT to get model.
+1. Usage of SAINT
+
+- The main running command are triplet_model.py and taxonomy_localization.py with following options:
+
+     -h, --help: show this help message and exit
+     -i, --inputcsv: the taxomony of the input data
+     -d --kmer_frequency_dir: the dir of kmer frequency.
+     -t, test_name: the list of test name.
+     -k, --kofKTuple: the value k of KTuple
+     -e, --epochNum: the number of epoch
+     -o, --output: output dir
+
+2. Run SAINT to get model.
 
     Create a new folder to put model file
 
@@ -64,7 +80,7 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
     >```  
  
 
-2. Predict taxonomy of unknown species and Calculate the performance of SAINT results.`  
+3. Predict taxonomy of unknown species and Calculate the performance of SAINT results.`  
 
     Run taxonomy_localization.py
     
