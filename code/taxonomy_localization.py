@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+#if you dont want to use CPU,you can delete it.
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import numpy as np
 import pandas as pd
 from keras.models import Model,load_model
