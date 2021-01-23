@@ -58,12 +58,18 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
 - The main running command are triplet_model.py and taxonomy_localization.py with following options:
 
      -h, --help: show this help message and exit
+     
      -i, --inputcsv: the taxomony of the input data
+     
      -d --kmer_frequency_dir: the dir of kmer frequency.
+     
      -t, test_name: the list of test name.
+     
      -k, --kofKTuple: the value k of KTuple
-     -e, --epochNum: the number of epoch
-     -o, --output: output dir
+     
+     -e, --epochNum: the number of epoch.
+     
+     -o, --output: output dir.
 
 2. Run SAINT to get model.
 
