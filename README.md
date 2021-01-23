@@ -61,9 +61,9 @@ The dataset was download from NCBI. For the 232 bacteria genomes, Saint uses KMC
      
      -i, --inputcsv: the taxomony of the input data
      
-     -d --kmer_frequency_dir: the dir of kmer frequency.
+     -d, --kmer_frequency_dir: the dir of kmer frequency.
      
-     -t, test_name: the list of test name.
+     -t, --test_name: the list of test name.
      
      -k, --kofKTuple: the value k of KTuple
      
