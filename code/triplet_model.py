@@ -3,13 +3,15 @@
 import sys
 import optparse
 import os
-import keras
 import random
 import numpy as np
 import pandas as pd
 
-from collections import defaultdict
+#if you dont want to use CPU,you can delete it.
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
+from collections import defaultdict
+import keras
 from keras.models import Model
 from keras.layers import Input, Dense, Lambda
 from keras import backend as K
