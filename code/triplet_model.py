@@ -258,7 +258,7 @@ def train(kingdom,phylum,class_,order,family,genus,file_name,test_name,k,epochs_
     
     model = triplet_model(k)
     model.fit([anchor_data_train,positive_data_train,negative_data_train],  np.zeros(len(anchor_data_train)), shuffle = False,
-      epochs=30 ,batch_size=5000,verbose =1,
+      epochs=epochs_num ,batch_size=5000,verbose =1,
       validation_data =([anchor_data_test,positive_data_test,negative_data_test],np.zeros(len(anchor_data_test))),
      # callbacks=[callbackmodel(model)],
       sample_weight = np.array(last_weight)
