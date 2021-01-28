@@ -200,17 +200,13 @@ def weight_distance(weight,distance_label):
      for i in distance_label:
          if i == 1:
              new_label.append(weight[i-1]*16)
-     for i in distance_label:
-         if i == 2:
+         elif i == 2:
              new_label.append(weight[i-1]*8)
-     for i in distance_label:
-         if i == 3:
+         elif i == 3:
              new_label.append(weight[i-1]*4)
-     for i in distance_label:
-         if i == 4:
+         elif i == 4:
              new_label.append(weight[i-1]*2)
-     for i in distance_label:
-         if i == 5:
+         elif i == 5:
              new_label.append(weight[i-1]*1)
      return new_label
 
